@@ -32,7 +32,7 @@ const Header01: React.FC = () => {
 
   return (
     <div className="mb-12">
-      <h1 className="text-[4rem] font-normal tracking-tight">{title}</h1>
+      <h1 className="text-[4rem] tracking-tight">{title}</h1>
       <div className="h-1 overflow-hidden rounded-full">
       <Image
       className=""

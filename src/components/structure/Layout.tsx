@@ -20,12 +20,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       : 'flex text-white border border-transparent hover:border-tertiary rounded-lg py-2 px-3';
 
   return (
-    <div className="flex min-h-screen max-w-[80rem] mx-auto relative">
-      <nav className="w-[20rem] border-x border-tertiary text-white p-4 fixed top-0 h-screen overflow-y-auto">
-        <div onClick={handleHomeClick}>
+    <div className="flex max-w-[80rem] mx-auto">
+      <nav className="w-[18rem] border-x border-tertiary text-white p-4 relative">
+        <div className="sticky top-4">
+          <div onClick={handleHomeClick}>
           <BrandLink />
-        </div>
-        <ul className="text-md mt-8">
+          </div>
+          <ul className="text-md mt-8">
           <li>
             <Link href="/colors" className={linkClasses('/colors')}>
               Colors
@@ -52,9 +53,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               Contact
             </Link>
           </li>
-        </ul>
+          </ul>
+        </div>
       </nav>
-      <main className="flex flex-col w-full min-h-screen p-24 ml-[20rem]">
+      <main className="flex flex-col w-full min-h-screen p-24">
         {children}
       </main>
     </div>

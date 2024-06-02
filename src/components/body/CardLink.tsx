@@ -10,7 +10,7 @@ export default function CardLink() {
             </div>
             <Image
             src="/images/thumbnail-img.svg"
-            width={800}
+            width={900}
             height={600}
             alt="Card link"
             />
