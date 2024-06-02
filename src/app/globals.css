@@ -66,7 +66,7 @@ a {
 }
 
 .button.is-icon-only {
-  background-image: url('/public/images/arrow.svg');
+  background-image: url('/images/arrow.svg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 2rem;
@@ -508,7 +508,7 @@ a {
 .my-button.is-icon {
   grid-column-gap: .125rem;
   grid-row-gap: .125rem;
-  background-image: url('/public/images/icon-chevron-right.svg');
+  background-image: url('/images/icon-chevron-right.svg');
   background-position: 90%;
   background-repeat: no-repeat;
   background-size: 20px;
@@ -532,7 +532,7 @@ a {
 }
 
 .my-button.is-text.is-icon {
-  background-image: url('/public/images/icon-chevron-right_1.svg');
+  background-image: url('/images/icon-chevron-right_1.svg');
 }
 
 .my-button.is-secondary {
@@ -542,7 +542,7 @@ a {
 }
 
 .my-button.is-secondary.is-icon {
-  background-image: url('/public/images/icon-chevron-right_1.svg');
+  background-image: url('/images/icon-chevron-right_1.svg');
   background-position: 94%;
   background-repeat: no-repeat;
   background-size: 20px;
@@ -554,7 +554,7 @@ a {
 .my-button.is-secondary.is-icon:hover {
   color: #fff;
   background-color: #3da7dc;
-  background-image: url('/public/images/icon-chevron-right.svg');
+  background-image: url('/images/icon-chevron-right.svg');
   border-color: rgba(0, 0, 0, 0);
 }
 
@@ -876,7 +876,7 @@ a {
 .styleguide_header {
   color: #fff;
   background-color: #fff;
-  background-image: linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .65)), url('/public/images/grainy-gradient-copy_1.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, .65), rgba(0, 0, 0, .65)), url('/images/grainy-gradient-copy_1.jpg');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -1361,7 +1361,7 @@ a {
 }
 
 .hero-image {
-  background-image: url('/public/images/hero-image-truck.jpg');
+  background-image: url('/images/hero-image-truck.jpg');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1370,14 +1370,14 @@ a {
 }
 
 .hero-image.is-bg-linear {
-  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0)), url('/public/images/hero-image-truck.jpg');
+  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0)), url('/images/hero-image-truck.jpg');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
 }
 
 .hero-image.is-bg-linear.border-radius-large {
-  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 40%), url('/public/images/hero-image-truck.jpg');
+  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0) 40%), url('/images/hero-image-truck.jpg');
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -1781,7 +1781,7 @@ a {
 .gradient-line {
   z-index: 1;
   opacity: .5;
-  background-image: url('/public/images/bg-gradient-line.jpg');
+  background-image: url('/images/bg-gradient-line.jpg');
   background-position: 50%;
   background-size: cover;
   position: absolute;
@@ -3051,91 +3051,91 @@ a {
 
 @font-face {
   font-family: 'Helvetica Now Var';
-  src: url('/public/fonts/helvetica-now-var.ttf') format('truetype');
+  src: url('/fonts/helvetica-now-var.ttf') format('truetype');
   font-weight: 50 1000;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialBlackItalic.otf') format('opentype');
+  src: url('/fonts/MundialBlackItalic.otf') format('opentype');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialBoldItalic.otf') format('opentype');
+  src: url('/fonts/MundialBoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialHairItalic.otf') format('opentype'), url('/public/fonts/MundialItalic.otf') format('opentype');
+  src: url('/fonts/MundialHairItalic.otf') format('opentype'), url('/fonts/MundialItalic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialBold.otf') format('opentype');
+  src: url('/fonts/MundialBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialBlack.otf') format('opentype');
+  src: url('/fonts/MundialBlack.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialDemibold.otf') format('opentype');
+  src: url('/fonts/MundialDemibold.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialLightItalic.otf') format('opentype');
+  src: url('/fonts/MundialLightItalic.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialHair.otf') format('opentype'), url('/public/fonts/MundialRegular.otf') format('opentype');
+  src: url('/fonts/MundialHair.otf') format('opentype'), url('/fonts/MundialRegular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialThinItalic.otf') format('opentype');
+  src: url('/fonts/MundialThinItalic.otf') format('opentype');
   font-weight: 100;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialThin.otf') format('opentype');
+  src: url('/fonts/MundialThin.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialDemiboldItalic.otf') format('opentype');
+  src: url('/fonts/MundialDemiboldItalic.otf') format('opentype');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Mundial';
-  src: url('/public/fonts/MundialLight.otf') format('opentype');
+  src: url('/fonts/MundialLight.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
