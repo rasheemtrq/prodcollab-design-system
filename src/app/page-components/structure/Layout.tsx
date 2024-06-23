@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import BrandLink from '../navigation/BrandLink';
+import BrandLink from '@/components/navigation/BrandLink';
 import { useRouter, usePathname } from 'next/navigation';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
