@@ -1,0 +1,22 @@
+/* skeleton.css */
+@keyframes shimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+  
+  .animate-pulse {
+    background: linear-gradient(
+      to right,
+      #28292B 8%,
+      #3f4044 18%,
+      #28292B 33%
+    );
+    background-size: 800px 104px;
+    display: inline-block;
+    position: relative;
+    animation: shimmer 1.5s infinite linear;
+  }

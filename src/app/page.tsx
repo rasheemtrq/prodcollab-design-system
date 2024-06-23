@@ -1,9 +1,7 @@
 'use client'
 
-import CardLink from "@/components/body/CardLink";
-import Header01 from "@/components/body/Header01";
-
-
+import CardLink from "@/app/page-components/body/CardLink";
+import Header01 from "@/app/page-components/body/Header01";
 // Home Page: src/app/page.tsx
 export default function Home() {
   return (
