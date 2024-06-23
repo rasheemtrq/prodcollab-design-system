@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Layout from "@/components/structure/Layout";
+import "./styles/globals.css";
+import Layout from "./page-components/structure/Layout";
+import CustomCursor from "./page-components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <CustomCursor fill="black" />
         <Layout>
           {children}
         </Layout>
