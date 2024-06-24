@@ -66,7 +66,9 @@ const TooltipPage: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-4">
-                        <Tooltip text="This is the tooltip content." children="Hover"/>
+                        <Tooltip text="This is the tooltip content.">
+                            <h2>Hover</h2>
+                        </Tooltip>
                     </div>
                     <div className="w-[44rem]">
                         {showCode['Tooltip'] && (
@@ -81,7 +83,7 @@ const TooltipPage: React.FC = () => {
                     <pre className="text-secondary text-sm py-8">
                         <code>
                             {`
-<Tooltip text="This is the tooltip content." children="Hover"/>
+<Tooltip text="This is the tooltip content."><h2>Hover</h2></Tooltip>
             `}
                         </code>
                     </pre>

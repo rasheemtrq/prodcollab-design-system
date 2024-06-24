@@ -66,9 +66,15 @@ const AccordionPage: React.FC = () => {
                     </div>
 
                     <div className="grid grid-cols-3 gap-4">
-                        <Accordion title="Accordion" children="{ Content Here }"/>
-                        <Accordion title="Accordion" variant="medium" children="{ Content Here }"/>
-                        <Accordion title="Accordion" variant="large" children="{ Content Here }"/>
+                        <Accordion title="Accordion">
+                            <h2>Content Goes</h2>
+                        </Accordion>
+                        <Accordion title="Accordion" variant="medium" >
+                            <h2>Content Goes</h2>
+                        </Accordion>
+                        <Accordion title="Accordion" variant="large" >
+                            <h2>Content Goes</h2>
+                        </Accordion>
                     </div>
                     <div className="w-[44rem]">
                         {showCode['Accordion'] && (
@@ -83,9 +89,9 @@ const AccordionPage: React.FC = () => {
                     <pre className="text-secondary text-sm py-8">
                         <code>
                             {`
-<Accordion title="Accordion" children="{ Content Here }"/>
-<Accordion title="Accordion" variant="medium" children="{ Content Here }"/>
-<Accordion title="Accordion" variant="large" children="{ Content Here }"/>
+<Accordion title="Accordion"><h2>Content Goes</h2>Here </Accordion>
+<Accordion title="Accordion" variant="medium" ><h2>Content Goes</h2></Accordion>
+<Accordion title="Accordion" variant="large" ><h2>Content Goes</h2> </Accordion>
             `}
                         </code>
                     </pre>

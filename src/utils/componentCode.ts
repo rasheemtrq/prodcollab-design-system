@@ -168,6 +168,7 @@ export default Chip;
 
 export const avatarCode = `
 import React from 'react';
+import Image from 'next/image';
 
 type AvatarProps = {
   src: string;
@@ -183,16 +184,16 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt, variant = 'default' }) => {
   };
 
   return (
-    <img
+    <Image
       src={src}
       alt={alt}
-      className={\`w-9 h-9 \${variantStyles[variant]}\`}
+      width={36} height={36}
+      className={\`border border-tertiary shadow-white shadow-2xl \${variantStyles[variant]}\`}
     />
   );
 };
 
 export default Avatar;
-
 `;
 
 export const alertCode =`
