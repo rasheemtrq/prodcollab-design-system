@@ -188,7 +188,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, alt, variant = 'default' }) => {
       src={src}
       alt={alt}
       width={36} height={36}
-      className={\`border border-tertiary shadow-white shadow-2xl \${variantStyles[variant]}\`}
+      className={\`w-9 h-9 border border-tertiary shadow-white shadow-2xl \${variantStyles[variant]}\`}
     />
   );
 };
