@@ -12,7 +12,7 @@ const Header01: React.FC = () => {
   const getPageDetails = (path: string) => {
     switch (path) {
       case '/':
-        return { title: 'ProdCollab Design System', description: 'A comprehensive style guide and UI component library made to work with Webflow and React for streamlined development.' };
+        return { title: 'ProdCollab Design System', description: 'A comprehensive UI component library built with Typescript and Tailwind CSS for streamlined development.' };
       case '/components/button':
         return { title: 'Button', description: 'The Button component offers various styles, including primary, secondary, and error variants. It is designed for flexibility and ease of use, featuring customizable labels and click handlers. Ideal for actions and navigation, it ensures consistent, accessible design across the application.' };
       case '/components/input-field':
@@ -29,7 +29,9 @@ const Header01: React.FC = () => {
         return { title: 'Card', description: 'The Card component provides a versatile container for displaying content such as text, images, and actions. It supports various layouts and styles, making it perfect for presenting information in a structured, visually appealing manner. Ideal for dashboards, product listings, and more.' };
       case '/components/skeleton':
         return { title: 'Skeleton', description: 'The Skeleton component provides a placeholder while content is loading, enhancing perceived performance. It mimics the structure of the content to be loaded, offering a smooth user experience by reducing the perceived waiting time. Ideal for improving loading states.' };
-      case '/components/tooltip':
+        case '/components/tablist':
+          return { title: 'Tablist', description: 'The TabList component is a React functional component that displays a list of tabs. It accepts tabs (an array of tab labels), sizing (optional, defaulting to xs, can be xs, sm, md, or lg to control size), and amount (optional, to limit the number of displayed tabs). Users can click tabs to set the active tab, with active and hovered tabs styled distinctly. The component is styled using Tailwind CSS classes and ensures type safety with TypeScript.' };
+        case '/components/tooltip':
         return { title: 'Tooltip', description: 'The Tooltip component displays informative text when users hover over an element. It supports smooth, upward transitions with a 200ms delay for a subtle, professional effect. Ideal for providing additional information without cluttering the UI, it enhances user interactions.' };
       case '/colors':
         return { title: 'Colors', description: 'Explore our color palette.' };

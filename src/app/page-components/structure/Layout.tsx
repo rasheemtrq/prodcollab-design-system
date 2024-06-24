@@ -72,6 +72,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </Link>
             </li>
             <li>
+              <Link href="/components/tablist" className={linkClasses('/components/tablist')}>
+                Tablist
+              </Link>
+            </li>
+            <li>
               <Link href="/components/tooltip" className={linkClasses('/components/tooltip')}>
                 Tooltip
               </Link>

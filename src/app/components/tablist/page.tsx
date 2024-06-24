@@ -4,15 +4,15 @@ import React, { useState } from 'react';
 import Header01 from '@/app/page-components/body/Header01';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import Tooltip from '@/app/design-system/components/Tooltip';
+import Tablist from '@/app/design-system/components/Tablist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { toolTipCode } from '@/utils/componentCode';
+import { tabListCode } from '@/utils/componentCode';
 
-const TooltipPage: React.FC = () => {
+const TablistPage: React.FC = () => {
     const [showCode, setShowCode] = useState<{ [key: string]: boolean }>({
     });
 
@@ -49,31 +49,32 @@ const TooltipPage: React.FC = () => {
             <ToastContainer position="top-center" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
 
             <div className="flex flex-col h-full gap-8">
-                {/* Tooltip */}
+                {/* Tablist */}
                 <div className="flex flex-col w-full h-auto justify-center items-center bg-primary border border-secondary py-24 px-8 rounded-[2rem] mb-8 overflow-hidden relative">
                     <div className="absolute top-0 flex justify-between w-full p-4">
                         <button
                             className={`px-4 py-2 rounded-full border border-tertiary text-sm hover:bg-tertiary transition-all 200ms ${showCode['Avatar'] ? 'bg-tertiary text-white' : 'text-primary'}`}
-                            onClick={() => toggleShowCode('Tooltip')}
+                            onClick={() => toggleShowCode('Tablist')}
                         >
-                            {showCode['Tooltip'] ? 'Hide Code' : 'Show Code'}
+                            {showCode['Tablist'] ? 'Hide Code' : 'Show Code'}
                         </button>
-                        <CopyToClipboard text={toolTipCode} onCopy={() => handleCopy(toolTipCode, 'Tooltip')}>
+                        <CopyToClipboard text={tabListCode} onCopy={() => handleCopy(tabListCode, 'Tablist')}>
                             <div className="flex justify-center items-center text-primary cursor-pointer w-10 h-10 border border-tertiary rounded-full hover:bg-blue-500 transition-all 200ms">
                                 <FontAwesomeIcon icon={faCopy} />
                             </div>
                         </CopyToClipboard>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-4">
-                        <Tooltip text="This is the tooltip content.">
-                            <h2>Hover</h2>
-                        </Tooltip>
+                    <div className="grid grid-cols-2 gap-4">
+                        <Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} amount={3} />
+                        <Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="sm" amount={3} />
+                        <Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="md" amount={3} />
+                        <Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="lg" amount={3} />
                     </div>
                     <div className="w-[44rem]">
-                        {showCode['Tooltip'] && (
+                        {showCode['Tablist'] && (
                             <SyntaxHighlighter language="tsx" style={customStyle}>
-                                {toolTipCode.trim()}
+                                {tabListCode.trim()}
                             </SyntaxHighlighter>
 
                         )}
@@ -83,7 +84,11 @@ const TooltipPage: React.FC = () => {
                     <pre className="text-secondary text-sm py-8">
                         <code>
                             {`
-<Tooltip text="This is the tooltip content."><h2>Hover</h2></Tooltip>
+//Option to limit tabs with 'amount' prop
+<Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} amount={3} />
+<Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="sm" amount={3} />
+<Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="md" amount={3} />
+<Tablist tabs={['Tab 1', 'Tab 2', 'Tab 3']} sizing="lg" amount={3} />
             `}
                         </code>
                     </pre>
@@ -93,4 +98,4 @@ const TooltipPage: React.FC = () => {
     );
 };
 
-export default TooltipPage;
+export default TablistPage;
