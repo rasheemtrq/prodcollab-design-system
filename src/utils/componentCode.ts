@@ -1,46 +1,57 @@
 // src/utils/componentCode.ts
+
 export const accordionCode = `
 import React, { useState, ReactNode } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 
 // Define types for the props
 type AccordionProps = {
-  title: string;
-  children: ReactNode;
-  variant?: 'default' | 'medium' | 'large';
+  items: { title: string; content: ReactNode; }[];
+  numberOfRows?: number;
 };
 
-const Accordion: React.FC<AccordionProps> = ({ title, children, variant = 'default' }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Accordion: React.FC<AccordionProps> = ({ items, numberOfRows = items.length }) => {
+  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Define styles for different variants
-  const variantStyles = {
-    default: 'text-sm',
-    medium: 'text-md',
-    large: 'text-xl',
+  const toggleAccordion = (index: number) => {
+    setOpenIndexes(prevIndexes =>
+      prevIndexes.includes(index)
+        ? prevIndexes.filter(i => i !== index)
+        : [...prevIndexes, index]
+    );
   };
 
   return (
-    <Link href="#" className={\`\${variantStyles[variant]}\`}>
-      <button
-        className="w-48 text-left py-2 px-3 focus:outline-none text-white flex items-center justify-between border border-transparent bg-secondary hover:border-tertiary rounded-lg transition-all ease-out 200ms"
-        onClick={toggleAccordion}
-      >
-        {title}
-        <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
-      </button>
-      {isOpen && (
-        <div className="px-4 py-2">
-          {children}
-        </div>
-      )}
-    </Link>
+    <div className="w-full max-w-80 h-auto">
+      {items.slice(0, numberOfRows).map((item, index) => {
+        const isFirst = index === 0;
+        const isLast = index === numberOfRows - 1;
+        const isOpen = openIndexes.includes(index);
+
+        return (
+          <div key={index}>
+            <div
+              className={\`flex flex-col bg-secondary \${isFirst ? 'rounded-t-xl' : ''} \${isLast ? 'rounded-b-xl' : ''}\`}
+            >
+              <button
+                className="w-full text-left py-4 px-4 focus:outline-none inline-flex items-center justify-between"
+                onClick={() => toggleAccordion(index)}
+              >
+                {item.title}
+                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
+              </button>
+              {isOpen && (
+                <div className="px-4 pb-6 text-white text-opacity-50">
+                  {item.content}
+                </div>
+              )}
+            </div>
+            {!isLast && <hr className="border border-transparent" />}
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

@@ -73,6 +73,7 @@ const AccordionPage: React.FC = () => {
                         </CopyToClipboard>
                     </div>
 
+                    {/* Display Component Here */}
                     <div className="w-80 mx-auto flex flex-col gap-4">
                         <div className="flex flex-row justify-between items-center">
                             <h2 className="text-2xl">FAQs</h2>
@@ -89,7 +90,7 @@ const AccordionPage: React.FC = () => {
                                     />
                                 </Link>
                                 <Link
-                                    href="https://brewla.design"
+                                    href="https://github.com/brewla"
                                     target="_blank"
                                 >
                                     <Image
@@ -103,6 +104,8 @@ const AccordionPage: React.FC = () => {
                         </div>
                         <Accordion items={accordionItems} numberOfRows={3} />
                     </div>
+
+                    {/* Show Component Code */}
                     <div className="w-[44rem]">
                         {showCode['Accordion'] && (
                             <SyntaxHighlighter language="tsx" style={customStyle}>
@@ -111,18 +114,28 @@ const AccordionPage: React.FC = () => {
 
                         )}
                     </div>
+
                 </div>
+                <p>
+                    1. Make sure to add this local variable within <code className="text-sm bg-secondary px-2 py-1 rounded-md border border-tertiary mx-1">app.tsx</code>
+                </p>
                 <div className="flex flex-col w-full h-auto justify-center items-center bg-primary border border-secondary rounded-[2rem] mb-8 overflow-hidden relative">
                     <pre className="text-secondary text-sm py-8">
                         <code>
                             {`
-<Accordion title="Accordion"><h2>Content Goes Here</h2></Accordion>
-<Accordion title="Accordion" variant="medium"><h2>Content Goes Here</h2></Accordion>
-<Accordion title="Accordion" variant="large"><h2>Content Goes Here</h2> </Accordion>
+const accordionItems = [
+{ title: 'Heading 1', content: 'Description here.' },
+{ title: 'Heading 2', content: 'Description here.' },
+{ title: 'Heading 3', content: 'Description here.' },
+// Add more sections as needed
+];
             `}
                         </code>
                     </pre>
                 </div>
+                <p>
+                    2. Import the component and add <code className="text-sm bg-secondary px-2 py-1 rounded-md border border-tertiary mx-1">{`<Accordion items={accordionItems} numberOfRows={3} />`}</code>
+                </p>
             </div>
         </div>
     );

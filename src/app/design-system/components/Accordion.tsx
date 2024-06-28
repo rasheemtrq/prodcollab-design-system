@@ -30,11 +30,6 @@ const Accordion: React.FC<AccordionProps> = ({ items, numberOfRows = items.lengt
           <div key={index}>
             <div
               className={`flex flex-col bg-secondary ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''}`}
-              style={{
-                overflow: 'hidden', // Ensure hidden overflow for smooth transition
-                transition: 'height 0.3s ease-in-out', // Smooth height transition
-                height: isOpen ? 'auto' : 'fit-content', // Auto height when open, fit-content when closed
-              }}
             >
               <button
                 className="w-full text-left py-4 px-4 focus:outline-none inline-flex items-center justify-between"
