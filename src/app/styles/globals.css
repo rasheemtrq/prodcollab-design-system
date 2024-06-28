@@ -2,6 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Regular.woff2') format('woff2'),
+       url('/fonts/Mundial-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Light.woff2') format('woff2'),
+       url('/fonts/Mundial-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-LightItalic.woff2') format('woff2'),
+       url('/fonts/Mundial-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-BoldItalic.woff2') format('woff2'),
+       url('/fonts/Mundial-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-DemiboldItalic.woff2') format('woff2'),
+       url('/fonts/Mundial-DemiboldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Italic.woff2') format('woff2'),
+       url('/fonts/Mundial-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Demibold.woff2') format('woff2'),
+       url('/fonts/Mundial-Demibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Bold.woff2') format('woff2'),
+       url('/fonts/Mundial-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-Black.woff2') format('woff2'),
+       url('/fonts/Mundial-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mundial';
+  src: url('/fonts/Mundial-BlackItalic.woff2') format('woff2'),
+       url('/fonts/Mundial-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 body {
   background-color: black;
   color: white;
