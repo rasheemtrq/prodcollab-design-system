@@ -11,6 +11,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { accordionCode } from '@/utils/componentCode';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const AccordionPage: React.FC = () => {
     const [showCode, setShowCode] = useState<{ [key: string]: boolean }>({
@@ -42,6 +44,12 @@ const AccordionPage: React.FC = () => {
         },
     };
 
+    const accordionItems = [
+        { title: 'What is ProdCollab?', content: 'ProdCollab is an online DAW for music producers and artists to collaborate in real time.' },
+        { title: 'How can I use this design system?', content: 'Download or clone from the GitHub repo, and follow the README.md' },
+        { title: 'When is the product releasing?', content: 'As soon as we get most of the product up and running!' },
+        // Add more sections as needed
+    ];
 
     return (
         <div>
@@ -65,16 +73,35 @@ const AccordionPage: React.FC = () => {
                         </CopyToClipboard>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4">
-                        <Accordion title="Accordion">
-                            <h2>Content Goes Here</h2>
-                        </Accordion>
-                        <Accordion title="Accordion" variant="medium" >
-                            <h2>Content Goes Here</h2>
-                        </Accordion>
-                        <Accordion title="Accordion" variant="large" >
-                            <h2>Content Goes Here</h2>
-                        </Accordion>
+                    <div className="w-80 mx-auto flex flex-col gap-4">
+                        <div className="flex flex-row justify-between items-center">
+                            <h2 className="text-2xl">FAQs</h2>
+                            <div className="flex flex-row gap-2">
+                                <Link
+                                    href="https://www.linkedin.com/company/brew-la/"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src="/images/linkedin.svg"
+                                        width={16}
+                                        height={16}
+                                        alt="linkedin"
+                                    />
+                                </Link>
+                                <Link
+                                    href="https://brewla.design"
+                                    target="_blank"
+                                >
+                                    <Image
+                                        src="/images/github-mark-white.svg"
+                                        width={16}
+                                        height={16}
+                                        alt="weblink"
+                                    />
+                                </Link>
+                            </div>
+                        </div>
+                        <Accordion items={accordionItems} numberOfRows={3} />
                     </div>
                     <div className="w-[44rem]">
                         {showCode['Accordion'] && (
