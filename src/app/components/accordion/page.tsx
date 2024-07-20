@@ -75,33 +75,6 @@ const AccordionPage: React.FC = () => {
 
                     {/* Display Component Here */}
                     <div className="w-80 mx-auto flex flex-col gap-4">
-                        <div className="flex flex-row justify-between items-center">
-                            <h2 className="text-2xl">FAQs</h2>
-                            <div className="flex flex-row gap-2">
-                                <Link
-                                    href="https://www.linkedin.com/company/brew-la/"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src="/images/linkedin.svg"
-                                        width={16}
-                                        height={16}
-                                        alt="linkedin"
-                                    />
-                                </Link>
-                                <Link
-                                    href="https://github.com/brewla"
-                                    target="_blank"
-                                >
-                                    <Image
-                                        src="/images/github-mark-white.svg"
-                                        width={16}
-                                        height={16}
-                                        alt="weblink"
-                                    />
-                                </Link>
-                            </div>
-                        </div>
                         <Accordion items={accordionItems} numberOfRows={3} />
                     </div>
 

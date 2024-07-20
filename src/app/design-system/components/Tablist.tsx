@@ -22,12 +22,12 @@ const Tablist: React.FC<TablistProps> = ({ tabs, sizing = 'xs', amount = tabs.le
 
     return (
         <div>
-            <div className="p-1 rounded-md border border-secondary justify-center items-center inline-flex gap-1">
+            <div className="p-1 rounded-lg border border-secondary justify-center items-center inline-flex gap-1">
                 {tabs.slice(0, amount).map((tab) => (
                     <div
                         key={tab}
                         onClick={() => handleTabClick(tab)}
-                        className={`rounded justify-center items-center flex hover:bg-tertiary ${activeTab === tab ? 'bg-tertiary' : 'opacity-50'
+                        className={`px-2 py-1 rounded justify-center items-center flex hover:bg-tertiary transition-all ease-in-out 200ms ${activeTab === tab ? 'bg-tertiary' : 'opacity-50'
                             } ${sizeClasses[sizing]}`}
                     >
                         <div className="text-white">{tab}</div>
