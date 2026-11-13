@@ -5,21 +5,27 @@ type AvatarProps = {
   src: string;
   alt: string;
   variant?: 'default' | 'round' | 'square';
+  size?: 'sm' | 'md' | 'lg';
 };
 
-const Avatar: React.FC<AvatarProps> = ({ src, alt, variant = 'default' }) => {
-  const variantStyles = {
-    default: 'rounded-full',
-    round: 'rounded-lg',
-    square: 'rounded-none',
-  };
+const variantStyles = {
+  default: 'rounded-full',
+  round: 'rounded-lg',
+  square: 'rounded-none',
+};
 
+const sizes = { sm: 24, md: 36, lg: 48 };
+
+const Avatar: React.FC<AvatarProps> = ({ src, alt, variant = 'default', size = 'md' }) => {
+  const px = sizes[size];
   return (
     <Image
       src={src}
       alt={alt}
-      width={36} height={36}
-      className={`w-9 h-9 border border-tertiary shadow-white shadow-2xl ${variantStyles[variant]}`}
+      width={px}
+      height={px}
+      style={{ width: px, height: px }}
+      className={`border border-tertiary object-cover ${variantStyles[variant]}`}
     />
   );
 };

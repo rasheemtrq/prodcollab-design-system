@@ -1,0 +1,89 @@
+/*
+ * ProdCollab design tokens.
+ *
+ * Every color, radius, duration and font in the system comes from here.
+ * Tailwind reads these through tailwind.config.ts, so `bg-surface-2`,
+ * `text-muted` and `bg-accent` all resolve to the variables below, and the
+ * DAW (which is plain CSS) can import this file directly.
+ */
+:root {
+  /* Surfaces: darkest (app background) to lightest (controls). */
+  --pc-surface-0: #0a0a0b; /* app background, "Background Low" */
+  --pc-surface-1: #181819; /* panels, cards, "Background Medium" */
+  --pc-surface-2: #28292b; /* controls, "Background High" */
+  --pc-surface-3: #3e3e40; /* hovered controls */
+  --pc-surface-inset: #050506; /* LCD wells, meter troughs */
+  --pc-surface-inverse: #ffffff; /* "Background Alternate" */
+
+  /* Lines */
+  --pc-line: #28292b;
+  --pc-line-strong: #3e3e40;
+
+  /* Text */
+  --pc-text: #ffffff;
+  --pc-text-muted: #9c9d9f;
+  --pc-text-subtle: #6b6c70;
+  --pc-text-inverse: #0a0a0b;
+
+  /* Brand and status */
+  --pc-accent: #3c82f6; /* "Surface Brand" */
+  --pc-accent-hover: #5a96f8;
+  --pc-accent-ink: #ffffff; /* text on accent */
+  --pc-success: #00b857;
+  --pc-warning: #ffce29;
+  --pc-danger: #ed5461;
+
+  /* DAW signals */
+  --pc-record: #ed5461; /* record arm, recording */
+  --pc-mute: #ffce29; /* mute engaged */
+  --pc-solo: #3c82f6; /* solo engaged */
+  --pc-playhead: #ffffff;
+  --pc-meter-low: #00b857; /* below -12 dBFS */
+  --pc-meter-mid: #ffce29; /* -12 to -3 dBFS */
+  --pc-meter-high: #ed5461; /* above -3 dBFS */
+
+  /* Track colors: the swatches a user can give a track. Clip, strip and
+     header tints are all derived from one of these. */
+  --pc-track-1: #3c82f6;
+  --pc-track-2: #8b5cf6;
+  --pc-track-3: #ec4899;
+  --pc-track-4: #ed5461;
+  --pc-track-5: #f59e0b;
+  --pc-track-6: #ffce29;
+  --pc-track-7: #00b857;
+  --pc-track-8: #22d3ee;
+
+  /* Collaborator colors: assigned to people in a session, in join order. */
+  --pc-peer-1: #ff7ab6;
+  --pc-peer-2: #4cc9f0;
+  --pc-peer-3: #ffd166;
+  --pc-peer-4: #b892ff;
+  --pc-peer-5: #7bf1a8;
+  --pc-peer-6: #ff9f68;
+
+  /* Shape */
+  --pc-radius-xs: 2px;
+  --pc-radius-sm: 6px;
+  --pc-radius-md: 8px;
+  --pc-radius-lg: 12px;
+  --pc-radius-xl: 32px;
+  --pc-radius-full: 9999px;
+
+  /* Motion */
+  --pc-duration-fast: 90ms;
+  --pc-duration-base: 200ms;
+  --pc-duration-slow: 320ms;
+  --pc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Type */
+  --pc-font-sans: 'Mundial', ui-sans-serif, system-ui, sans-serif;
+  --pc-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --pc-duration-fast: 0ms;
+    --pc-duration-base: 0ms;
+    --pc-duration-slow: 0ms;
+  }
+}

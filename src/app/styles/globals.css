@@ -93,9 +93,9 @@
 }
 
 body {
-  background-color: black;
-  color: white;
-  font-family: 'Mundial', sans-serif;
+  background-color: var(--pc-surface-0);
+  color: var(--pc-text);
+  font-family: var(--pc-font-sans);
   margin: 0;
   padding: 0;
   box-sizing: border-box;

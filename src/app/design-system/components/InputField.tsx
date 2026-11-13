@@ -1,48 +1,55 @@
-// src/components/elements/InputField.tsx
-import React, { useState } from 'react';
+'use client';
 
-interface InputFieldProps {
-  disabled?: boolean;
+import React, { useId } from 'react';
+
+type InputFieldProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+  /** Placeholder text. A trailing "*" is stripped (use `required` instead). */
   label: string;
   variant: 'error' | 'outlined' | 'password' | 'default';
-}
+  /** Message shown under an error field. */
+  errorMessage?: string;
+};
 
-const InputField: React.FC<InputFieldProps> = ({ disabled, label = 'Type here', variant }) => {
-  const [showAsterisk, setShowAsterisk] = useState(true);
+const variantClasses = {
+  error: 'bg-secondary border border-danger',
+  outlined: 'bg-transparent border-2 border-tertiary',
+  password: 'bg-secondary border border-tertiary',
+  default: 'bg-secondary border border-tertiary',
+};
 
-  const getInputStateClasses = () => {
-    switch (variant) {
-      case 'error':
-        return 'border border-red-500 text-white';
-      case 'outlined':
-        return 'bg-transparent border-2 border-tertiary placeholder:text-gray-500 text-white';
-      case 'password':
-        return 'border border-tertiary text-white';
-      default:
-        return 'border border-tertiary text-white';
-    }
-  };
-
-  const inputStateClass = getInputStateClasses();
-  const inputType = variant === 'password' ? 'password' : 'text';
+const InputField: React.FC<InputFieldProps> = ({
+  label = 'Type here',
+  variant,
+  required = true,
+  errorMessage = 'Invalid input. Please try again.',
+  className = '',
+  ...rest
+}) => {
+  const errorId = useId();
+  const isError = variant === 'error';
+  const text = label.replace('*', '').trim();
 
   return (
     <div className="flex flex-col relative">
       <input
-        type={inputType}
-        disabled={disabled}
-        className={`px-4 py-2 rounded-lg bg-secondary ${inputStateClass}`}
-        placeholder={label.replace('*', '')} // Removing the asterisk from the placeholder
-        onFocus={() => setShowAsterisk(false)}
-        onBlur={() => setShowAsterisk(true)}
+        type={variant === 'password' ? 'password' : 'text'}
+        aria-label={text}
+        aria-invalid={isError || undefined}
+        aria-describedby={isError ? errorId : undefined}
+        required={required}
+        placeholder={text}
+        className={`peer px-4 py-2 pr-8 rounded-lg text-primary placeholder:text-subtle outline-none focus:border-accent transition-colors duration-base disabled:opacity-40 ${variantClasses[variant]} ${className}`}
+        {...rest}
       />
-      {showAsterisk && (
-        <span className="absolute right-3 top-5 transform -translate-y-1/2 text-red-500">*</span>
+      {required && (
+        <span aria-hidden className="absolute right-3 top-2.5 text-danger peer-focus:opacity-0 transition-opacity duration-base">
+          *
+        </span>
       )}
-      {variant === 'error' && (
-        <label className="text-red-500 text-xs mt-1 block">
-          Invalid input. Please try again.
-        </label>
+      {isError && (
+        <p id={errorId} className="text-danger text-xs mt-1">
+          {errorMessage}
+        </p>
       )}
     </div>
   );
