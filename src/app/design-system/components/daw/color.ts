@@ -1,8 +1,10 @@
 // Helpers shared by the DAW components.
 import type { CSSProperties } from 'react';
 
+/** One of the eight track swatches in tokens.css. */
+export type TrackSwatch = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 /** A track swatch (1-8, from tokens.css) or any CSS color. */
-export type TrackColor = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | string;
+export type TrackColor = TrackSwatch | string;
 /** A collaborator swatch (1-6, from tokens.css) or any CSS color. */
 export type PeerColor = 1 | 2 | 3 | 4 | 5 | 6 | string;
 

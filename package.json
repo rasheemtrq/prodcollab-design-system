@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "deploy": "next build && next export && npx gh-pages -d out"
+    "deploy": "next build && next export && npx gh-pages -d out",
+    "test": "node --test \"tests/*.test.mts\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",

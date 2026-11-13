@@ -32,8 +32,15 @@ const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, children, actions
   useEffect(() => {
     if (!isOpen) return;
     const previous = document.activeElement as HTMLElement | null;
-    const first = panel.current?.querySelector<HTMLElement>(FOCUSABLE);
-    (first ?? panel.current)?.focus();
+    // Focus, in order: an element marked data-autofocus, the first control in
+    // the body, the first footer button (e.g. Cancel), then the close button.
+    const el = panel.current;
+    const first =
+      el?.querySelector<HTMLElement>('[data-autofocus]') ??
+      el?.querySelector<HTMLElement>(`[data-modal-body] :is(${FOCUSABLE})`) ??
+      el?.querySelector<HTMLElement>(`[data-modal-actions] :is(${FOCUSABLE})`) ??
+      el?.querySelector<HTMLElement>(FOCUSABLE);
+    (first ?? el)?.focus();
 
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -87,8 +94,10 @@ const Modal: React.FC<ModalProps> = ({ title, isOpen, onClose, children, actions
             <FontAwesomeIcon icon={faXmark} />
           </button>
         </div>
-        <div className="text-sm text-secondary leading-5">{children}</div>
-        <div className="flex justify-end gap-2 mt-6">
+        <div data-modal-body className="text-sm text-secondary leading-5">
+          {children}
+        </div>
+        <div data-modal-actions className="flex justify-end gap-2 mt-6">
           {actions ?? (
             <button
               type="button"

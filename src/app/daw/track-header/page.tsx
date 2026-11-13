@@ -65,6 +65,7 @@ export default function TrackHeaderPage() {
           { name: 'onMute / onSolo / onArm', type: '() => void', description: 'The R button only renders with onArm.' },
           { name: 'level', type: 'number', description: 'dBFS for the inline meter; omit to hide it.' },
           { name: 'selected / onSelect', type: 'boolean / () => void', description: 'Selection highlight.' },
+          { name: 'menu', type: 'ReactNode', description: 'Slot at the end of the name row, usually a small <Menu> of track actions.' },
           { name: 'height / width', type: 'number', default: '64 / 220', description: 'Match the lane height.' },
         ]}
       />
