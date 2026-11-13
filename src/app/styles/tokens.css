@@ -6,7 +6,10 @@
  * `text-muted` and `bg-accent` all resolve to the variables below, and the
  * DAW (which is plain CSS) can import this file directly.
  */
+/* Dark UI: native scrollbars, form controls and selection follow suit. */
 :root {
+  color-scheme: dark;
+
   /* Surfaces: darkest (app background) to lightest (controls). */
   --pc-surface-0: #0a0a0b; /* app background, "Background Low" */
   --pc-surface-1: #181819; /* panels, cards, "Background Medium" */

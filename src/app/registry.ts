@@ -88,6 +88,14 @@ export const docs: DocEntry[] = [
       'A text input with default, outlined, password, and error states. Required fields show an asterisk, and errors are linked to the input for screen readers.',
   },
   {
+    href: '/components/menu',
+    name: 'Menu',
+    group: 'Components',
+    description:
+      'A dropdown menu, and a context menu that opens on right-click (or Shift+F10). Both support submenus, checkbox and radio items, shortcuts, and destructive items. Keyboard: arrows move, Enter chooses, Right opens a submenu, Escape steps back, and typing a letter jumps to an item.',
+    isNew: true,
+  },
+  {
     href: '/components/modal',
     name: 'Modal',
     group: 'Components',
@@ -190,6 +198,30 @@ export const docs: DocEntry[] = [
     isNew: true,
   },
   {
+    href: '/daw/color-picker',
+    name: 'Color Picker',
+    group: 'DAW Controls',
+    description:
+      'Picks one of the eight track colors. It comes three ways: inline as a radio group, as a swatch button with a popover, or as radio items for a Color submenu in a track menu.',
+    isNew: true,
+  },
+  {
+    href: '/daw/piano-roll',
+    name: 'Piano Roll',
+    group: 'DAW Controls',
+    description:
+      'The MIDI note editor: a keyboard, a snap grid, a velocity lane and the playhead. Click to place a note and drag to slide it into place. Drag the right edge to resize, Shift-drag to box-select, and double-click to delete. Everything also works from the keyboard.',
+    isNew: true,
+  },
+  {
+    href: '/daw/automation-lane',
+    name: 'Automation Lane',
+    group: 'DAW Controls',
+    description:
+      'Breakpoint automation for one parameter, drawn in song time under a track. The line is flat before the first point and after the last, with straight lines in between, the same rule the DAW engine uses. valueAt() returns the value at any time.',
+    isNew: true,
+  },
+  {
     href: '/daw/channel-strip',
     name: 'Channel Strip',
     group: 'DAW Controls',
@@ -220,7 +252,7 @@ export const docs: DocEntry[] = [
     name: 'Arrangement',
     group: 'Patterns',
     description:
-      'Track headers, clips, a moving playhead, a drum pattern and collaborator presence, laid out the way the DAW arranges a song.',
+      'Track headers, clips, automation, a moving playhead and collaborator presence, laid out the way the DAW arranges a song. Select a MIDI clip to edit it in the piano roll, and right-click a track for its menu.',
     isNew: true,
   },
 ];

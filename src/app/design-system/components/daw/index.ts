@@ -10,3 +10,7 @@ export { default as TrackHeader, type TrackKind } from './TrackHeader';
 export { default as Transport, Lcd, PPQ, formatBbt, formatClock } from './Transport';
 export * from './color';
 export { useDragValue } from './useDragValue';
+export { default as AutomationLane, type AutomationPoint } from './AutomationLane';
+export { default as ColorPicker, ColorPickerButton, colorMenuItems, TRACK_COLORS, TRACK_COLOR_NAMES, trackColorName } from './ColorPicker';
+export { default as PianoRoll, type RollNote } from './PianoRoll';
+export * from './editing';

@@ -26,6 +26,8 @@ type TrackHeaderProps = {
   onSolo?: () => void;
   onArm?: () => void;
   onSelect?: () => void;
+  /** A slot at the end of the name row, usually a <Menu> of track actions. */
+  menu?: React.ReactNode;
   /** Row height in px; match the lane height. */
   height?: number;
   width?: number;
@@ -44,6 +46,7 @@ const TrackHeader: React.FC<TrackHeaderProps> = ({
   onSolo,
   onArm,
   onSelect,
+  menu,
   height = 64,
   width = 220,
 }) => (
@@ -66,7 +69,12 @@ const TrackHeader: React.FC<TrackHeaderProps> = ({
         >
           <FontAwesomeIcon icon={KIND_ICON[kind]} />
         </span>
-        <span className="text-sm font-semibold truncate">{name}</span>
+        <span className="text-sm font-semibold truncate flex-1">{name}</span>
+        {menu && (
+          <span className="shrink-0 -mr-1" onClick={(e) => e.stopPropagation()}>
+            {menu}
+          </span>
+        )}
       </div>
       <div className="flex items-center gap-1" onClick={(e) => e.stopPropagation()}>
         <ToolButton size="xs" tone="mute" pressed={!!muted} onClick={onMute} label={`Mute ${name}`}>
