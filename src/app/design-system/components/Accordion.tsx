@@ -1,4 +1,6 @@
-import React, { useState, ReactNode } from 'react';
+'use client';
+
+import React, { useId, useState, ReactNode } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,6 +12,7 @@ type AccordionProps = {
 
 const Accordion: React.FC<AccordionProps> = ({ items, numberOfRows = items.length }) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const baseId = useId();
 
   const toggleAccordion = (index: number) => {
     setOpenIndexes(prevIndexes =>
@@ -32,14 +35,23 @@ const Accordion: React.FC<AccordionProps> = ({ items, numberOfRows = items.lengt
               className={`flex flex-col bg-secondary ${isFirst ? 'rounded-t-xl' : ''} ${isLast ? 'rounded-b-xl' : ''}`}
             >
               <button
-                className="w-full text-left py-4 px-4 focus:outline-none inline-flex items-center justify-between"
+                type="button"
+                id={`${baseId}-h${index}`}
+                aria-expanded={isOpen}
+                aria-controls={`${baseId}-p${index}`}
+                className={`w-full text-left py-4 px-4 outline-none focus-visible:ring-2 focus-visible:ring-accent inline-flex items-center justify-between ${isFirst ? 'rounded-t-xl' : ''} ${isLast && !isOpen ? 'rounded-b-xl' : ''}`}
                 onClick={() => toggleAccordion(index)}
               >
                 {item.title}
-                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
+                <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} aria-hidden />
               </button>
               {isOpen && (
-                <div className="px-4 pb-6 text-white text-opacity-50">
+                <div
+                  id={`${baseId}-p${index}`}
+                  role="region"
+                  aria-labelledby={`${baseId}-h${index}`}
+                  className="px-4 pb-6 text-secondary"
+                >
                   {item.content}
                 </div>
               )}

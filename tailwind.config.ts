@@ -1,5 +1,16 @@
 import type { Config } from "tailwindcss";
 
+// Colors point at the CSS variables in src/app/styles/tokens.css so the
+// design system and the DAW share one source of truth.
+const v = (name: string) => `var(--pc-${name})`;
+
+const track = Object.fromEntries(
+  Array.from({ length: 8 }, (_, i) => [`${i + 1}`, v(`track-${i + 1}`)]),
+);
+const peer = Object.fromEntries(
+  Array.from({ length: 6 }, (_, i) => [`${i + 1}`, v(`peer-${i + 1}`)]),
+);
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,23 +20,65 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0A0A0B',
-        secondary:'#181819',
-        tertiary: '#28292B',
-        accent: '#3c82f6',
+        // Original names, kept so existing classes keep working.
+        primary: v("surface-0"),
+        secondary: v("surface-1"),
+        tertiary: v("surface-2"),
+        accent: { DEFAULT: v("accent"), hover: v("accent-hover"), ink: v("accent-ink") },
+
+        surface: {
+          0: v("surface-0"),
+          1: v("surface-1"),
+          2: v("surface-2"),
+          3: v("surface-3"),
+          inset: v("surface-inset"),
+          inverse: v("surface-inverse"),
+        },
+        line: { DEFAULT: v("line"), strong: v("line-strong") },
+        success: v("success"),
+        warning: v("warning"),
+        danger: v("danger"),
+        record: v("record"),
+        mute: v("mute"),
+        solo: v("solo"),
+        playhead: v("playhead"),
+        meter: { low: v("meter-low"), mid: v("meter-mid"), high: v("meter-high") },
+        track,
+        peer,
       },
       borderColor: {
-        primary: '#0A0A0B',
-        secondary: '#181819',
-        tertiary: '#28292B',
-        accent: '#3c82f6',
+        primary: v("surface-0"),
+        secondary: v("surface-1"),
+        tertiary: v("surface-2"),
       },
       textColor: {
-        primary: '#FFFFFF',
-        secondary: '#9c9d9f',
-        tertiary: '#28292B',
-        error: '#ED5461',
-      }
+        primary: v("text"),
+        secondary: v("text-muted"),
+        tertiary: v("surface-2"),
+        muted: v("text-muted"),
+        subtle: v("text-subtle"),
+        inverse: v("text-inverse"),
+        error: v("danger"),
+      },
+      borderRadius: {
+        xs: v("radius-xs"),
+        "pc-sm": v("radius-sm"),
+        "pc-md": v("radius-md"),
+        "pc-lg": v("radius-lg"),
+        "pc-xl": v("radius-xl"),
+      },
+      fontFamily: {
+        sans: [v("font-sans")],
+        mono: [v("font-mono")],
+      },
+      transitionDuration: {
+        fast: v("duration-fast"),
+        base: v("duration-base"),
+        slow: v("duration-slow"),
+      },
+      transitionTimingFunction: {
+        "pc-out": v("ease-out"),
+      },
     },
   },
   plugins: [],

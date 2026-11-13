@@ -18,7 +18,7 @@ const Skeleton: React.FC<SkeletonProps> = ({ avatarSize = 'small', lineSize = 's
   };
 
   return (
-    <div className="p-4 bg-primary rounded-xl border border-secondary inline-flex flex-row gap-4 items-start">
+    <div role="status" aria-label="Loading" aria-busy="true" className="p-4 bg-primary rounded-xl border border-secondary inline-flex flex-row gap-4 items-start">
       <div className={`rounded-full animate-pulse ${avatarStyles[avatarSize]}`} />
       <div className="flex flex-col gap-2">
         <div className={`rounded animate-pulse ${lineStyles[lineSize]}`} />
