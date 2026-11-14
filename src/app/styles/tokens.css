@@ -80,7 +80,7 @@
   --pc-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* Type */
-  --pc-font-sans: 'Red Hat Text', ui-sans-serif, system-ui, sans-serif;
+  --pc-font-sans: 'Gantari', ui-sans-serif, system-ui, sans-serif;
   --pc-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
 }
 

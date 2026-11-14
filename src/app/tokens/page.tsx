@@ -69,14 +69,14 @@ export default function TokensPage() {
       <section className="mb-12">
         <h2 className="text-xl tracking-tight mb-4">Type</h2>
         <div className="flex flex-col gap-3 mb-4">
-          <p className="text-[4rem] tracking-tight leading-none">Red Hat Text</p>
-          <p className="text-xl">A free variable font (SIL OFL): any weight from 300 to 700, with italics.</p>
+          <p className="text-[4rem] tracking-tight leading-none">Gantari</p>
+          <p className="text-xl">A free variable font (SIL OFL): any weight from 100 to 900, with italics.</p>
           <p className="font-mono text-accent text-sm">5.3.480 · 0:09.043 · -6.0 dB · 140 BPM</p>
           <p className="text-[10px] uppercase tracking-wider text-secondary">Control label · 10px uppercase</p>
         </div>
         <table className="w-full text-left border border-secondary rounded-2xl overflow-hidden">
           <tbody>
-            <Row cells={['--pc-font-sans', 'Red Hat Text', 'All UI text']} />
+            <Row cells={['--pc-font-sans', 'Gantari', 'All UI text']} />
             <Row cells={['--pc-font-mono', 'ui-monospace stack', 'Readouts: position, tempo, dB. Use tabular-nums so digits do not jitter.']} />
           </tbody>
         </table>

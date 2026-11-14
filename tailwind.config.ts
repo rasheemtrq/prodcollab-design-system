@@ -19,9 +19,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // Red Hat Text is a variable font and reads lighter than Mundial did, so
-      // light and normal sit half a step heavier. Semibold and bold are unchanged.
-      fontWeight: { light: '350', normal: '450' },
+      // Gantari is drawn a step lighter than Mundial, the font it replaced, so each
+      // named weight sits one step heavier: Gantari 500 matches Mundial Regular.
+      fontWeight: { light: '400', normal: '500', semibold: '700', bold: '800' },
       colors: {
         // Original names, kept so existing classes keep working.
         primary: v("surface-0"),
