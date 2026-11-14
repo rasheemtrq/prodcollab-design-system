@@ -282,7 +282,7 @@ const ChannelStrip: React.FC<ChannelStripProps> = ({
       {insertsOpen && (
         <ul
           id={listId}
-          className={`absolute z-10 bottom-11 min-w-[132px] m-0 p-1.5 list-none rounded-pc-md bg-surface-3 border border-line-strong text-xs leading-6 ${master ? 'right-1' : 'left-1'}`}
+          className={`absolute z-10 bottom-11 min-w-[132px] m-0 p-1.5 list-none rounded-pc-md bg-tertiary border border-line-strong text-xs leading-6 ${master ? 'right-1' : 'left-1'}`}
         >
           {inserts.length === 0 ? (
             <li className="px-1.5 text-secondary">No inserts</li>

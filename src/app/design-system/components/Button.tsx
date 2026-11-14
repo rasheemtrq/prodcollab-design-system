@@ -10,7 +10,7 @@ const variantStyles = {
   default: 'bg-surface-inverse text-inverse hover:opacity-85',
   primary: 'bg-accent text-accent-ink hover:bg-accent-hover',
   secondary: 'bg-tertiary text-primary hover:bg-surface-3',
-  error: 'bg-danger text-primary hover:opacity-85',
+  error: 'bg-danger text-inverse hover:brightness-110',
 };
 
 const sizeStyles = {

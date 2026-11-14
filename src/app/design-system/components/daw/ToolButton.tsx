@@ -18,7 +18,7 @@ const pressedStyles: Record<Tone, string> = {
   accent: 'bg-accent text-accent-ink',
   mute: 'bg-mute text-inverse',
   solo: 'bg-solo text-accent-ink',
-  record: 'bg-record text-primary',
+  record: 'bg-record text-inverse',
 };
 
 const sizeStyles = {

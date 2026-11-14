@@ -13,7 +13,7 @@ type BadgeProps = {
 const variantStyles = {
   notification: 'bg-accent text-accent-ink',
   pending: 'bg-warning text-inverse',
-  error: 'bg-danger text-primary',
+  error: 'bg-danger text-inverse',
   success: 'bg-success text-inverse',
 };
 

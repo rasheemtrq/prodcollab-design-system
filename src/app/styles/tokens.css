@@ -21,17 +21,18 @@
   /* Lines */
   --pc-line: #28292b;
   --pc-line-strong: #3e3e40;
+  --pc-line-control: #6b6c70; /* borders that identify a control: 3.8:1 on surface-0, 3.4:1 on surface-1 */
 
   /* Text */
   --pc-text: #ffffff;
   --pc-text-muted: #9c9d9f;
-  --pc-text-subtle: #6b6c70;
+  --pc-text-subtle: #8e8f93; /* 4.5:1 or more on surface-0, -1, -2 and inset */
   --pc-text-inverse: #0a0a0b;
 
   /* Brand and status */
   --pc-accent: #3c82f6; /* "Surface Brand" */
   --pc-accent-hover: #5a96f8;
-  --pc-accent-ink: #ffffff; /* text on accent */
+  --pc-accent-ink: #0a0a0b; /* text on accent: 5.4:1 (white was 3.7:1) */
   --pc-success: #00b857;
   --pc-warning: #ffce29;
   --pc-danger: #ed5461;

@@ -19,29 +19,30 @@ const groups: { title: string; note?: string; swatches: Swatch[] }[] = [
     swatches: [
       { name: 'Text', token: 'text', value: '#FFFFFF', dark: true },
       { name: 'Muted', token: 'text-muted', value: '#9C9D9F', dark: true },
-      { name: 'Subtle', token: 'text-subtle', value: '#6B6C70' },
+      { name: 'Subtle', token: 'text-subtle', value: '#8E8F93', dark: true },
+      { name: 'Control border', token: 'line-control', value: '#6B6C70' },
     ],
   },
   {
     title: 'Brand & status',
     swatches: [
-      { name: 'Surface Brand', token: 'accent', value: '#3C82F6' },
+      { name: 'Surface Brand', token: 'accent', value: '#3C82F6', dark: true },
       { name: 'Surface Success', token: 'success', value: '#00B857', dark: true },
       { name: 'Surface Warning', token: 'warning', value: '#FFCE29', dark: true },
-      { name: 'Surface Error', token: 'danger', value: '#ED5461' },
+      { name: 'Surface Error', token: 'danger', value: '#ED5461', dark: true },
     ],
   },
   {
     title: 'DAW signals',
     note: 'Mute, solo and record are the pressed colors of Tool Button. The meter zones are below −12 dBFS, −12 to −3, and above −3.',
     swatches: [
-      { name: 'Record', token: 'record', value: '#ED5461' },
+      { name: 'Record', token: 'record', value: '#ED5461', dark: true },
       { name: 'Mute', token: 'mute', value: '#FFCE29', dark: true },
-      { name: 'Solo', token: 'solo', value: '#3C82F6' },
+      { name: 'Solo', token: 'solo', value: '#3C82F6', dark: true },
       { name: 'Playhead', token: 'playhead', value: '#FFFFFF', dark: true },
       { name: 'Meter Low', token: 'meter-low', value: '#00B857', dark: true },
       { name: 'Meter Mid', token: 'meter-mid', value: '#FFCE29', dark: true },
-      { name: 'Meter High', token: 'meter-high', value: '#ED5461' },
+      { name: 'Meter High', token: 'meter-high', value: '#ED5461', dark: true },
     ],
   },
   {
@@ -50,7 +51,7 @@ const groups: { title: string; note?: string; swatches: Swatch[] }[] = [
     swatches: [
       ['Blue', '#3C82F6'], ['Violet', '#8B5CF6'], ['Pink', '#EC4899'], ['Red', '#ED5461'],
       ['Orange', '#F59E0B'], ['Yellow', '#FFCE29'], ['Green', '#00B857'], ['Cyan', '#22D3EE'],
-    ].map(([name, value], i) => ({ name: `${i + 1} · ${name}`, token: `track-${i + 1}`, value, dark: [5, 6, 7].includes(i) })),
+    ].map(([name, value], i) => ({ name: `${i + 1} · ${name}`, token: `track-${i + 1}`, value, dark: true })),
   },
   {
     title: 'Collaborator colors',
@@ -79,7 +80,7 @@ export default function ColorGrid() {
                 style={{ background: `var(--pc-${s.token})` }}
               >
                 <p>{s.name}</p>
-                <div className="text-xs font-mono opacity-80">
+                <div className="text-xs font-mono">
                   <p>--pc-{s.token}</p>
                   <p>{s.value}</p>
                 </div>

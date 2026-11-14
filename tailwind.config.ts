@@ -34,7 +34,7 @@ const config: Config = {
           inset: v("surface-inset"),
           inverse: v("surface-inverse"),
         },
-        line: { DEFAULT: v("line"), strong: v("line-strong") },
+        line: { DEFAULT: v("line"), strong: v("line-strong"), control: v("line-control") },
         success: v("success"),
         warning: v("warning"),
         danger: v("danger"),

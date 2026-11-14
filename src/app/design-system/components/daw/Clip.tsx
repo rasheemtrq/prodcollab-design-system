@@ -90,7 +90,7 @@ const Clip: React.FC<ClipProps> = ({
           : 'bg-[color-mix(in_srgb,var(--c)_26%,#0d0d0e)] border-[color-mix(in_srgb,var(--c)_70%,transparent)]'
       } ${peer ? 'shadow-[0_0_0_2px_var(--peer)]' : ''} ${muted ? 'opacity-40 saturate-0' : ''} ${className}`}
     >
-      <div className="absolute inset-x-0 top-0 h-[15px] px-1.5 bg-[color-mix(in_srgb,var(--c)_78%,#000)] text-inverse text-[10px] font-semibold leading-[15px] truncate">
+      <div className="absolute inset-x-0 top-0 h-[15px] px-1.5 bg-[var(--c)] text-inverse text-[10px] font-semibold leading-[15px] truncate">
         {name}
       </div>
       <div className="absolute inset-x-0 top-[18px] bottom-[3px]">
