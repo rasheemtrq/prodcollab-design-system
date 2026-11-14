@@ -476,7 +476,7 @@ const PianoRoll: React.FC<PianoRollProps> = ({
                   }}
                 >
                   {w > 30 && rowHeight >= 12 && (
-                    <span className="absolute left-1 top-0 text-[9px] leading-[13px] font-semibold text-inverse opacity-80 pointer-events-none">{noteName(n.pitch)}</span>
+                    <span className="absolute left-0.5 top-px px-0.5 rounded-[2px] bg-black/60 text-[9px] leading-[11px] font-semibold text-primary pointer-events-none">{noteName(n.pitch)}</span>
                   )}
                   <span className="absolute right-0 top-0 bottom-0 w-[5px] cursor-ew-resize rounded-r-[2px] group-hover:bg-white/30" />
                 </div>

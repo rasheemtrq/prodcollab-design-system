@@ -62,15 +62,16 @@ export default function ChannelStripPage() {
       </DocExample>
       <PropsTable
         rows={[
-          { name: 'name / color', type: 'string / TrackColor', description: 'Label and the top-edge color.' },
+          { name: 'name / color', type: 'string / TrackColor', description: 'Name and the color of its dot and pan fill.' },
           { name: 'volume / onVolumeChange', type: 'number / (dB) => void', description: 'Fader in dB.' },
           { name: 'pan / onPanChange', type: 'number / (v) => void', default: '0', description: '-1 (left) to 1 (right).' },
-          { name: 'muted / soloed / onMute / onSolo', type: 'boolean / () => void', description: 'M and S buttons.' },
-          { name: 'levels / peaks', type: 'number[]', description: 'Post-fader dBFS per channel for the meter.' },
-          { name: 'inserts', type: 'string[]', default: '[]', description: 'Effect names, top to bottom.' },
-          { name: 'master', type: 'boolean', default: 'false', description: 'Wider, accent colored, clip light, no pan/M/S.' },
-          { name: 'selected / onSelect', type: 'boolean / () => void', description: 'Selection highlight.' },
-          { name: 'faderHeight', type: 'number', default: '180', description: 'Fader and meter length.' },
+          { name: 'muted / soloed / onMute / onSolo', type: 'boolean / () => void', description: 'M and S buttons. Muting dims the meter.' },
+          { name: 'dimmed', type: 'boolean', default: 'false', description: "Silenced by another channel's solo; dims the meter." },
+          { name: 'levels / peaks', type: 'number[]', description: 'Post-fader dBFS per channel. They fill the fader track; the peak also shows as a number above it.' },
+          { name: 'inserts', type: 'string[]', default: '[]', description: 'Effect names, top to bottom, behind an "N FX" button.' },
+          { name: 'master', type: 'boolean', default: 'false', description: 'Accent handle, latching clip light, no pan/M/S.' },
+          { name: 'selected / onSelect', type: 'boolean / () => void', description: 'Selection highlight. The name is the select button.' },
+          { name: 'faderHeight', type: 'number', default: '220', description: 'Fader track length in px.' },
         ]}
       />
     </div>

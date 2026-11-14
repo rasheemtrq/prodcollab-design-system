@@ -225,6 +225,10 @@ export default function ArrangementPattern() {
               reset();
               setOffset(0);
             }}
+            onGoToStart={() => {
+              reset();
+              setOffset(0);
+            }}
             position={pos}
             bpm={bpm}
             onBpmChange={setBpm}

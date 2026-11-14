@@ -187,7 +187,7 @@ const MenuList: React.FC<ListProps> = ({ items, label, onDismiss, onCloseAll, in
             className={`relative flex items-center gap-2 h-8 px-2.5 rounded-pc-sm cursor-default select-none outline-none ${
               item.disabled
                 ? 'opacity-40'
-                : `${action.danger ? 'text-danger focus:bg-[color-mix(in_srgb,var(--pc-danger)_18%,transparent)]' : 'focus:bg-tertiary'} ${subOpen ? 'bg-tertiary' : ''}`
+                : `${action.danger ? 'text-danger focus:bg-danger focus:text-inverse' : 'focus:bg-tertiary'} ${subOpen ? 'bg-tertiary' : ''}`
             }`}
           >
             <span aria-hidden className="w-4 shrink-0 grid place-items-center text-xs text-secondary">

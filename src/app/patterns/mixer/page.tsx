@@ -72,6 +72,7 @@ export default function MixerPattern() {
               setPlaying(false);
               reset();
             }}
+            onGoToStart={reset}
             position={(t * bpm) / 60}
             bpm={bpm}
             onBpmChange={setBpm}
@@ -84,7 +85,7 @@ export default function MixerPattern() {
             ]}
           />
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-2">
+        <div className="flex gap-1 items-start overflow-x-auto pb-2">
           {channels.map((c, i) => (
             <ChannelStrip
               key={c.name}
@@ -98,6 +99,7 @@ export default function MixerPattern() {
               soloed={c.soloed}
               onMute={() => update(i, { muted: !c.muted })}
               onSolo={() => update(i, { soloed: !c.soloed })}
+              dimmed={anySolo && !c.soloed}
               levels={levels[i]}
               peaks={allPeaks.slice(i * 2, i * 2 + 2)}
               inserts={c.inserts}
@@ -105,7 +107,7 @@ export default function MixerPattern() {
               onSelect={() => setSelected(i)}
             />
           ))}
-          <div className="w-2 shrink-0" />
+          <div aria-hidden className="self-stretch w-px mx-1.5 my-3 shrink-0 bg-line" />
           <ChannelStrip
             name="Master"
             master
@@ -118,8 +120,8 @@ export default function MixerPattern() {
         </div>
       </div>
       <p className="text-sm text-secondary font-light mt-4 max-w-[44rem]">
-        Built from <code>Transport</code>, <code>ChannelStrip</code> (which contains <code>Knob</code>, <code>Fader</code>,{' '}
-        <code>Meter</code> and <code>ToolButton</code>), <code>PresenceStack</code> and <code>usePeakHold</code>. Channels use
+        Built from <code>Transport</code>, <code>ChannelStrip</code> (a meter-in-fader on the <code>Fader</code> law, a pan slider and
+        mute/solo, all on the shared drag and keyboard gestures), <code>PresenceStack</code> and <code>usePeakHold</code>. Channels use
         equal-power panning and sum into the master bus by power, so the meters behave the way you would expect, but the signal is
         simulated.
       </p>

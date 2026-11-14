@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faPause, faPlay, faRepeat, faStop } from '@fortawesome/free-solid-svg-icons';
-import ToolButton from './ToolButton';
+import { faBackwardStep, faCircle, faPause, faPlay, faRepeat, faStop } from '@fortawesome/free-solid-svg-icons';
 
 /** Ticks per quarter note, matching the DAW engine. */
 export const PPQ = 960;
@@ -53,6 +52,8 @@ type TransportProps = {
   playing: boolean;
   onPlayToggle: () => void;
   onStop: () => void;
+  /** Jump back to the start without stopping; the button shows only with a handler. */
+  onGoToStart?: () => void;
   /** Current position in beats (quarter notes), 0-based. */
   position: number;
   bpm: number;
@@ -70,6 +71,7 @@ const Transport: React.FC<TransportProps> = ({
   playing,
   onPlayToggle,
   onStop,
+  onGoToStart,
   position,
   bpm,
   onBpmChange,
@@ -90,50 +92,69 @@ const Transport: React.FC<TransportProps> = ({
     else setDraft(String(bpm));
   };
 
+  const nudge = (delta: number) => {
+    const n = Math.min(300, Math.max(20, Math.round((bpm + delta) * 10) / 10));
+    if (n !== bpm) onBpmChange?.(n);
+  };
+
+  const round = 'size-9 shrink-0 rounded-full grid place-items-center transition-colors duration-fast outline-none focus-visible:ring-2 focus-visible:ring-accent';
+  const ghost = `${round} hover:bg-tertiary`;
+  const toggled = 'bg-[color-mix(in_srgb,var(--pc-accent)_22%,transparent)] text-accent';
+  const divider = <span aria-hidden className="w-px h-5 mx-2.5 shrink-0 bg-line-strong" />;
+  const hasToggles = !!(onLoopToggle || onMetronomeToggle);
+
   return (
-    <div role="toolbar" aria-label="Transport" className="inline-flex flex-wrap items-end gap-2 p-2 rounded-xl bg-secondary border border-line">
-      <div className="flex items-center gap-1.5">
+    <div
+      role="toolbar"
+      aria-label="Transport"
+      className="inline-flex items-center gap-0.5 h-11 p-1 rounded-full bg-secondary shadow-[inset_0_0_0_1px_var(--pc-line)]"
+    >
+      {onGoToStart && (
+        <button type="button" aria-label="Go to start" title="Go to start" onClick={onGoToStart} className={`${ghost} text-primary`}>
+          <FontAwesomeIcon icon={faBackwardStep} className="w-3 h-3" />
+        </button>
+      )}
+      <button
+        type="button"
+        aria-label={playing ? 'Pause' : 'Play'}
+        aria-pressed={playing}
+        title={`${playing ? 'Pause' : 'Play'} (Space)`}
+        onClick={onPlayToggle}
+        className={`${round} bg-accent text-inverse hover:bg-accent-hover`}
+      >
+        <FontAwesomeIcon icon={playing ? faPause : faPlay} className="w-3 h-3" />
+      </button>
+      <button type="button" aria-label="Stop" title="Stop" onClick={onStop} className={`${ghost} text-primary`}>
+        <FontAwesomeIcon icon={faStop} className="w-2.5 h-2.5" />
+      </button>
+      {onRecordToggle && (
         <button
           type="button"
-          aria-label={playing ? 'Pause' : 'Play'}
-          aria-pressed={playing}
-          title={`${playing ? 'Pause' : 'Play'} (Space)`}
-          onClick={onPlayToggle}
-          className="w-[38px] h-[30px] rounded-pc-md bg-accent text-accent-ink hover:bg-accent-hover transition-colors duration-fast grid place-items-center outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--pc-surface-1)] focus-visible:ring-accent"
+          aria-label="Record"
+          aria-pressed={!!recording}
+          title="Record"
+          onClick={onRecordToggle}
+          className={recording ? `${round} bg-record text-inverse` : `${ghost} text-record`}
         >
-          <FontAwesomeIcon icon={playing ? faPause : faPlay} className="w-3.5 h-3.5" />
+          <FontAwesomeIcon icon={faCircle} className="w-3 h-3" />
         </button>
-        <ToolButton size="md" label="Stop" onClick={onStop}>
-          <FontAwesomeIcon icon={faStop} />
-        </ToolButton>
-        {onRecordToggle && (
-          <ToolButton size="md" tone="record" label="Record" pressed={!!recording} onClick={onRecordToggle}>
-            <FontAwesomeIcon icon={faCircle} className={recording ? '' : 'text-record'} />
-          </ToolButton>
-        )}
-        {onLoopToggle && (
-          <ToolButton size="md" label="Loop" pressed={!!looping} onClick={onLoopToggle}>
-            <FontAwesomeIcon icon={faRepeat} />
-          </ToolButton>
-        )}
-        {onMetronomeToggle && (
-          <ToolButton size="md" label="Metronome" pressed={!!metronome} onClick={onMetronomeToggle}>
-            <MetronomeIcon />
-          </ToolButton>
-        )}
-      </div>
+      )}
 
-      <Lcd label="Bar.Beat.Tick" tone={recording ? 'record' : 'accent'}>
-        <span aria-live="off">{formatBbt(position, beatsPerBar)}</span>
-      </Lcd>
-      <Lcd label="Time" className="hidden sm:inline-flex">
-        {formatClock(position, bpm)}
-      </Lcd>
-      <label className="inline-flex flex-col items-start gap-0.5">
-        <span className="text-[9px] uppercase tracking-wider text-subtle leading-none">BPM</span>
+      {divider}
+      {/* No labels: the bar.beat.tick and m:ss.mmm formats say what each number is. */}
+      <div role="timer" aria-label={`Position, bar beat tick${recording ? ', recording' : ''}`} className="flex items-baseline gap-2.5 pr-1">
+        <span aria-live="off" className={`min-w-[84px] font-mono text-base font-semibold tabular-nums ${recording ? 'text-record' : 'text-primary'}`}>
+          {formatBbt(position, beatsPerBar)}
+        </span>
+        <span className="hidden sm:inline font-mono text-xs tabular-nums text-secondary">{formatClock(position, bpm)}</span>
+      </div>
+      {divider}
+
+      <label className="h-9 px-2.5 flex items-center gap-1 rounded-full cursor-text">
         <input
           type="text"
           inputMode="decimal"
+          aria-label="Tempo in BPM"
           value={draft}
           readOnly={!onBpmChange}
           onChange={(e) => setDraft(e.target.value)}
@@ -144,10 +165,40 @@ const Transport: React.FC<TransportProps> = ({
               setDraft(String(bpm));
               (e.target as HTMLInputElement).blur();
             }
+            if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && onBpmChange) {
+              e.preventDefault();
+              nudge((e.key === 'ArrowUp' ? 1 : -1) * (e.shiftKey ? 0.1 : 1));
+            }
           }}
-          className="h-7 w-[64px] px-2.5 rounded-[7px] bg-surface-inset border border-line font-mono font-semibold text-sm text-accent tabular-nums outline-none focus:border-accent"
+          className="w-10 bg-transparent text-right font-mono text-base font-semibold tabular-nums rounded-[4px] outline-none focus-visible:ring-2 focus-visible:ring-accent"
         />
+        <span aria-hidden className="text-[11px] text-secondary">
+          BPM
+        </span>
       </label>
+
+      {hasToggles && (
+        <>
+          {divider}
+          {onLoopToggle && (
+            <button type="button" aria-label="Loop" aria-pressed={!!looping} title="Loop" onClick={onLoopToggle} className={`${ghost} ${looping ? toggled : 'text-secondary'}`}>
+              <FontAwesomeIcon icon={faRepeat} className="w-3.5 h-3.5" />
+            </button>
+          )}
+          {onMetronomeToggle && (
+            <button
+              type="button"
+              aria-label="Metronome"
+              aria-pressed={!!metronome}
+              title="Metronome"
+              onClick={onMetronomeToggle}
+              className={`${ghost} ${metronome ? toggled : 'text-secondary'}`}
+            >
+              <MetronomeIcon />
+            </button>
+          )}
+        </>
+      )}
     </div>
   );
 };

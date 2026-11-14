@@ -12,9 +12,9 @@ type InputFieldProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'>
 
 const variantClasses = {
   error: 'bg-secondary border border-danger',
-  outlined: 'bg-transparent border-2 border-tertiary',
-  password: 'bg-secondary border border-tertiary',
-  default: 'bg-secondary border border-tertiary',
+  outlined: 'bg-transparent border-2 border-line-control',
+  password: 'bg-secondary border border-line-control',
+  default: 'bg-secondary border border-line-control',
 };
 
 const InputField: React.FC<InputFieldProps> = ({

@@ -19,6 +19,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Gantari is drawn a step lighter than Mundial, the font it replaced, so each
+      // named weight sits one step heavier: Gantari 500 matches Mundial Regular.
+      fontWeight: { light: '400', normal: '500', semibold: '700', bold: '800' },
       colors: {
         // Original names, kept so existing classes keep working.
         primary: v("surface-0"),
@@ -34,7 +37,7 @@ const config: Config = {
           inset: v("surface-inset"),
           inverse: v("surface-inverse"),
         },
-        line: { DEFAULT: v("line"), strong: v("line-strong") },
+        line: { DEFAULT: v("line"), strong: v("line-strong"), control: v("line-control") },
         success: v("success"),
         warning: v("warning"),
         danger: v("danger"),

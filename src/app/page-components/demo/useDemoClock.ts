@@ -9,14 +9,15 @@ import { useEffect, useRef, useState } from 'react';
 export function useDemoClock(running: boolean) {
   const [t, setT] = useState(0);
   const base = useRef(0);
+  // Where the current run started, so reset() also works while running.
+  const run = useRef({ start: 0, from: 0 });
 
   useEffect(() => {
     if (!running) return;
     let raf = 0;
-    const start = performance.now();
-    const from = base.current;
+    run.current = { start: performance.now(), from: base.current };
     const tick = (now: number) => {
-      base.current = from + (now - start) / 1000;
+      base.current = run.current.from + (now - run.current.start) / 1000;
       setT(base.current);
       raf = requestAnimationFrame(tick);
     };
@@ -26,6 +27,7 @@ export function useDemoClock(running: boolean) {
 
   const reset = () => {
     base.current = 0;
+    run.current = { start: performance.now(), from: 0 };
     setT(0);
   };
 
