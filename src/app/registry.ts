@@ -226,7 +226,7 @@ export const docs: DocEntry[] = [
     name: 'Channel Strip',
     group: 'DAW Controls',
     description:
-      'One mixer channel: insert list, pan knob, fader, stereo meter, mute, solo and name. It is built from the Knob, Fader, Meter and Tool Button components.',
+      'One mixer channel: name, peak readout, a fader whose track is the stereo meter, pan, mute and solo, and an insert list behind an FX button. The fader uses the Fader law and every control shares the Knob and Fader gestures.',
     isNew: true,
   },
   {
