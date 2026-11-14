@@ -72,6 +72,7 @@ export default function MixerPattern() {
               setPlaying(false);
               reset();
             }}
+            onGoToStart={reset}
             position={(t * bpm) / 60}
             bpm={bpm}
             onBpmChange={setBpm}

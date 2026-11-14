@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faPause, faPlay, faRepeat, faStop } from '@fortawesome/free-solid-svg-icons';
+import { faBackwardStep, faCircle, faPause, faPlay, faRepeat, faStop } from '@fortawesome/free-solid-svg-icons';
 
 /** Ticks per quarter note, matching the DAW engine. */
 export const PPQ = 960;
@@ -52,6 +52,8 @@ type TransportProps = {
   playing: boolean;
   onPlayToggle: () => void;
   onStop: () => void;
+  /** Jump back to the start without stopping; the button shows only with a handler. */
+  onGoToStart?: () => void;
   /** Current position in beats (quarter notes), 0-based. */
   position: number;
   bpm: number;
@@ -69,6 +71,7 @@ const Transport: React.FC<TransportProps> = ({
   playing,
   onPlayToggle,
   onStop,
+  onGoToStart,
   position,
   bpm,
   onBpmChange,
@@ -106,6 +109,11 @@ const Transport: React.FC<TransportProps> = ({
       aria-label="Transport"
       className="inline-flex items-center gap-0.5 h-11 p-1 rounded-full bg-secondary shadow-[inset_0_0_0_1px_var(--pc-line)]"
     >
+      {onGoToStart && (
+        <button type="button" aria-label="Go to start" title="Go to start" onClick={onGoToStart} className={`${ghost} text-primary`}>
+          <FontAwesomeIcon icon={faBackwardStep} className="w-3 h-3" />
+        </button>
+      )}
       <button
         type="button"
         aria-label={playing ? 'Pause' : 'Play'}

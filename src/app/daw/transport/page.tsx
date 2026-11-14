@@ -34,6 +34,7 @@ export default function TransportPage() {
   playing={playing}
   onPlayToggle={() => setPlaying((p) => !p)}
   onStop={stop}
+  onGoToStart={goToStart}
   position={beats}
   bpm={bpm}
   onBpmChange={setBpm}
@@ -52,6 +53,10 @@ export default function TransportPage() {
             reset();
             acc.current = { beats: 0, t: 0 };
           }}
+          onGoToStart={() => {
+            reset();
+            acc.current = { beats: 0, t: 0 };
+          }}
           position={position}
           bpm={bpm}
           onBpmChange={setBpm}
@@ -67,6 +72,7 @@ export default function TransportPage() {
         rows={[
           { name: 'playing / onPlayToggle', type: 'boolean / () => void', description: 'Play/pause state.' },
           { name: 'onStop', type: '() => void', description: 'Stop and return to the start.' },
+          { name: 'onGoToStart', type: '() => void', description: 'Go-to-start button; shown only with a handler. Jumps back to bar 1 and keeps playing if playing.' },
           { name: 'position', type: 'number', description: 'Position in beats (quarter notes), 0-based. Shown as bar.beat.tick at 960 PPQ and as m:ss.mmm.' },
           { name: 'bpm / onBpmChange', type: 'number / (bpm) => void', description: 'Tempo; edited inline, clamped to 20–300. Enter commits, Escape cancels, arrow keys step by 1 (Shift: 0.1).' },
           { name: 'recording / onRecordToggle', type: 'boolean / () => void', description: 'Record button; shown only with a handler. The position turns red and is announced as recording.' },
