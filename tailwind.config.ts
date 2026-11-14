@@ -19,6 +19,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Red Hat Text is a variable font and reads lighter than Mundial did, so
+      // light and normal sit half a step heavier. Semibold and bold are unchanged.
+      fontWeight: { light: '350', normal: '450' },
       colors: {
         // Original names, kept so existing classes keep working.
         primary: v("surface-0"),
